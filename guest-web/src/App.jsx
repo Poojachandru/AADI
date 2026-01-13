@@ -3,6 +3,7 @@ import RestaurantPicker from "./pages/RestaurantPicker.jsx";
 import RestaurantMenu from "./pages/RestaurantMenu.jsx";
 import Cart from "./pages/Cart.jsx";
 import StageOrder from "./pages/StageOrder.jsx";
+import OrderStatus from "./pages/OrderStatus.jsx";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
         <Route path="/r/:restaurantId" element={<RestaurantMenu />} />
         <Route path="/r/:restaurantId/cart" element={<Cart />} />
         <Route path="/r/:restaurantId/stage" element={<StageOrder />} />
+        <Route path="/r/:restaurantId/status" element={<OrderStatus />} />
 
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

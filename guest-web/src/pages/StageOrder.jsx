@@ -92,6 +92,7 @@ export default function StageOrder() {
             <div className="row">
               <Link className="btn btnGhost" to={`/r/${restaurantId}/cart`}>Cart</Link>
               <Link className="btn btnGhost" to={`/r/${restaurantId}`}>Menu</Link>
+              <Link className="btn btnGhost" to={`/r/${restaurantId}/status`}>Status</Link>
             </div>
           </div>
 
@@ -139,7 +140,7 @@ export default function StageOrder() {
 
               <div style={{ height: 8 }} />
               <div className="subtle">
-                Dev note: we’ll wire real geofence permissions later. For now, use “Simulate vicinity”.
+                Dev note: geofence wiring later. For now use “Simulate vicinity”.
               </div>
             </div>
           </div>
@@ -183,9 +184,12 @@ export default function StageOrder() {
                   try {
                     await injectToRestaurantTablet(fired);
                     showToast("Sent to restaurant tablet");
-                  } catch (e) {
+                  } catch {
                     showToast("Fired (tablet inject failed)");
                   }
+
+                  // Go to live tracking screen
+                  navigate(`/r/${restaurantId}/status`);
                 }}
               >
                 Simulate Vicinity → Fire
@@ -195,12 +199,9 @@ export default function StageOrder() {
             {state === "FIRED" && (
               <button
                 className="btn btnPrimary"
-                onClick={() => {
-                  showToast("Fired. Tablet should show it.");
-                  navigate("/");
-                }}
+                onClick={() => navigate(`/r/${restaurantId}/status`)}
               >
-                Done
+                View Status
               </button>
             )}
           </div>

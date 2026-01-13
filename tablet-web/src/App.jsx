@@ -36,7 +36,6 @@ function buildAlerts(allOrders) {
   const alerts = [];
 
   for (const o of allOrders) {
-    // Ready waiting too long
     if (o.status === "READY") {
       const m = minutesSince(o.updatedAt || o.createdAt);
       if (m != null && m >= 5) {
@@ -49,7 +48,6 @@ function buildAlerts(allOrders) {
       }
     }
 
-    // Arrived but not started
     if (o.status === "INCOMING" && o?.arrival?.state === "ARRIVED") {
       const createdM = minutesSince(o.createdAt);
       if (createdM != null && createdM >= 4) {
@@ -64,17 +62,14 @@ function buildAlerts(allOrders) {
     }
   }
 
-  // Sort: urgent first, then watch
   const score = (a) => (a.severity === "urgent" ? 2 : a.severity === "watch" ? 1 : 0);
   alerts.sort((a, b) => score(b) - score(a));
-
-  // Keep rail short / glanceable
   return alerts.slice(0, 12);
 }
 
 export default function App() {
-  const { ordersByStatus, connectionStatus, lastUpdated } = useOrders({
-    pollMs: 3000,
+  const { ordersByStatus, connectionStatus, lastUpdated, debug } = useOrders({
+    pollMs: 2000,
     path: "/tablet/orders",
   });
 
@@ -91,6 +86,10 @@ export default function App() {
         <div>
           <div className="title">Arrival-Aware Tablet</div>
           <div className="subtle">Last update: {formatTime(lastUpdated)}</div>
+          <div className="subtle" style={{ marginTop: 4 }}>
+            Mode: {debug?.mode} | URL: {debug?.lastUrl}
+            {debug?.lastError ? ` | Error: ${debug.lastError}` : ""}
+          </div>
         </div>
 
         <div className={`conn conn-${connectionStatus.toLowerCase()}`}>
