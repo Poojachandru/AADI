@@ -1,0 +1,244 @@
+:root {
+  --border: #e5e7eb;
+  --text: #111827;
+  --muted: #6b7280;
+  --bg: #ffffff;
+  --panel: #fafafa;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.app {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.subtle {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.conn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #9ca3af;
+}
+
+.conn-connecting .dot { background: #9ca3af; }
+.conn-live .dot { background: #22c55e; }
+.conn-reconnecting .dot { background: #f59e0b; }
+.conn-offline .dot { background: #ef4444; }
+
+/* NEW: overall layout with a right rail */
+.layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 12px;
+  padding: 12px;
+  min-height: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  min-height: 0;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--panel);
+  min-height: 0;
+}
+
+.colTitle {
+  margin: 0;
+  padding: 10px 12px;
+  font-size: 16px;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.count {
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 8px;
+  background: #f9fafb;
+}
+
+.colBody {
+  padding: 12px;
+  overflow: auto;
+  min-height: 0;
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 14px;
+  padding: 10px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+
+/* RIGHT RAIL (Alerts) */
+.rail {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--panel);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.railHeader {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.railTitle {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.railCount {
+  font-size: 12px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 8px;
+  background: #f9fafb;
+}
+
+.railBody {
+  padding: 12px;
+  overflow: auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.railEmpty {
+  color: var(--muted);
+  font-size: 14px;
+  padding: 10px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.alert {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.alertTitle {
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.alertDetail {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.alert-watch {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.12);
+}
+
+.alert-urgent {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.12);
+}
+
+.railFooter {
+  border-top: 1px solid var(--border);
+  background: #fff;
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.railStat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.railLabel {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.railValue {
+  font-size: 12px;
+  font-weight: 800;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 8px;
+  background: #f9fafb;
+}
+
+/* Responsive: collapse rail under columns */
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
