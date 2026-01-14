@@ -1,25 +1,40 @@
 # AADI — Arrival-Aware Dine-In 🍽️
 
-AADI (Arrival-Aware Dine-In) is a prototype system that allows guests to pre-order food and have it **automatically fired to the restaurant kitchen when they arrive** (or are near arrival).
+**AADI (Arrival-Aware Dine-In)** is a prototype system that rethinks restaurant pre-ordering by aligning food preparation with **actual guest arrival**, not guesswork.
 
-The system includes:
-- A **Guest Web UI** (choose restaurant → menu → cart → stage → fire)
-- A **Restaurant Tablet UI** (incoming / preparing / ready)
-- A **Mock Restaurant API** that simulates real kitchen behavior
+Guests can browse a menu, place an order, and *stage* it in advance.  
+The order is **automatically fired to the restaurant when the guest arrives**, ensuring food is prepared at the right time — not too early, not too late.
 
-This project is focused on **UX + system flow**, not payments or authentication (yet).
+This repository focuses on **UX, system flow, and realistic restaurant behavior**.
 
 ---
 
-##  Core Idea
+## 🚀 Why AADI?
 
-Traditional pre-ordering causes food to be ready too early or too late.
+Traditional pre-ordering often fails because:
+- Food is prepared too early or too late
+- Kitchens lack reliable arrival signals
+- Guests lose trust in timing promises
 
-**AADI solves this by introducing a “staged” order:**
-1. Guest builds order
-2. Guest stages order with ETA or location
-3. Order fires automatically on arrival
-4. Restaurant tablet shows it instantly
+**AADI introduces a staged order lifecycle**:
+1. Draft — guest builds order
+2. Staged — guest sets ETA or enables location
+3. Fired — order automatically sent on arrival
+4. Preparing → Ready → Served
+
+This mirrors how restaurants actually operate.
+
+---
+
+##  What This Repo Demonstrates
+
+- End-to-end guest → restaurant flow
+- Arrival-aware order firing
+- Realistic restaurant tablet UI
+- Live order status synchronization
+- Production-style UI architecture
+
+⚠️ Payments and authentication are intentionally out of scope.
 
 ---
 
@@ -29,6 +44,6 @@ Traditional pre-ordering causes food to be ready too early or too late.
 AADI/
 ├── guest-web/          # Guest-facing UI (React + Vite)
 ├── tablet-web/         # Restaurant tablet UI (React + Vite)
-├── tablet-mock-api/    # Mock backend (Node + Express)
+├── tablet-mock-api/    # Mock backend simulating kitchen behavior
 ├── .gitignore
 └── README.md
