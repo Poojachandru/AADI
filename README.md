@@ -11,7 +11,7 @@ This project is focused on **UX + system flow**, not payments or authentication 
 
 ---
 
-## 🧠 Core Idea
+##  Core Idea
 
 Traditional pre-ordering causes food to be ready too early or too late.
 
@@ -23,7 +23,7 @@ Traditional pre-ordering causes food to be ready too early or too late.
 
 ---
 
-## 🧱 Repository Structure
+##  Repository Structure
 
 ```txt
 AADI/
