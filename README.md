@@ -9,7 +9,7 @@ This repository focuses on **UX, system flow, and realistic restaurant behavior*
 
 ---
 
-## 🚀 Why AADI?
+##  Why AADI?
 
 Traditional pre-ordering often fails because:
 - Food is prepared too early or too late
